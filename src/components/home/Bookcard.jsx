@@ -13,13 +13,15 @@ const Bookcard = ({ title, author, edition }) => {
           />
         </div>
         <div className="absolute bottom-0 opacity bg-gray-900 w-full z-10 rounded-b-xl p-2">
-          <p className="text-center text-gray-300">
+          <p className="text-center text-gray-300 ">
             {" "}
-            <span className="text-gray-500"> Title:</span> {title}
+            <span className="text-gray-500 "> Title:</span>
+            <span className="font-bold">{title}</span>
           </p>
           <p className="text-center text-gray-300">
             {" "}
-            <span className="text-gray-500"> Author:</span> {author}
+            <span className="text-gray-500"> Author:</span>{" "}
+            <span className="italic">{author}</span>
           </p>
           <p className="text-center text-gray-400">
             {" "}

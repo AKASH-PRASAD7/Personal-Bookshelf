@@ -53,8 +53,8 @@ const bookReducer = (state = initialState, { type, payload }) => {
     case LOADING:
       return {
         ...state,
-        error: payload,
-        loading: true,
+        error: null,
+        loading: payload,
       };
 
     default:
@@ -63,3 +63,5 @@ const bookReducer = (state = initialState, { type, payload }) => {
       };
   }
 };
+
+export default bookReducer;

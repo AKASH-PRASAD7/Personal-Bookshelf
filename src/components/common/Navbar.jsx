@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { BsFillBackspaceFill } from "react-icons/bs";
+import { fetchSearchedBooks } from "../../redux/book/action";
+import { useDispatch } from "react-redux";
+
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const handleSearch = (e) => {
     setSearch(e.target.value);
-    console.log(e.target.value);
+    dispatch(fetchSearchedBooks(e.target.value));
+  };
+  const handleSearchClick = () => {
+    dispatch(fetchSearchedBooks(search));
   };
   return (
     <>
@@ -32,7 +39,10 @@ const Navbar = () => {
             onClick={() => setSearch("")}
             className="absolute text-black right-12 top-2 text-2xl cursor-pointer"
           />
-          <FaMagnifyingGlass className="text-2xl cursor-pointer m-1" />
+          <FaMagnifyingGlass
+            onClick={handleSearchClick}
+            className="text-2xl cursor-pointer m-1"
+          />
         </div>
       </nav>
     </>

@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Bookcard from "./Bookcard";
 import Loader from "../common/Loading";
-import axios from "axios";
+import { fetchBooks } from "../../redux/book/action";
+import { useSelector, useDispatch } from "react-redux";
 
 const BookContainer = () => {
-  const [books, setBooks] = useState(null);
-  const fetchBooks = async () => {
-    try {
-      let Bookdata = await axios(
-        "https://openlibrary.org/search.json?q=harry+potter&limit=10&page=1"
-      );
-
-      Bookdata = Bookdata.data?.docs;
-      setBooks(Bookdata);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  const { loading, error, books, searchBooks } = useSelector(
+    (state) => state.books
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchBooks();
+    dispatch(fetchBooks());
     // eslint-disable-next-line
   }, []);
 
@@ -27,11 +19,18 @@ const BookContainer = () => {
     <>
       <section
         className={`flex gap-8 m-4 mt-8 ${
-          books ? "" : "h-screen"
+          loading ? "h-screen" : ""
         } justify-around flex-wrap`}
       >
-        {books ? (
-          books.map((each) => {
+        {error && (
+          <p className="bg-gray-700 text-red-500 font-semibold text-center ">
+            Some Error occured: {error}
+          </p>
+        )}
+        {loading ? (
+          <Loader />
+        ) : searchBooks.length > 0 ? (
+          searchBooks.map((each) => {
             return (
               <Bookcard
                 key={each.key}
@@ -42,7 +41,16 @@ const BookContainer = () => {
             );
           })
         ) : (
-          <Loader />
+          books.map((each) => {
+            return (
+              <Bookcard
+                key={each.key}
+                title={each.title}
+                author={each.author_name}
+                edition={each.edition_count}
+              />
+            );
+          })
         )}
       </section>
     </>
