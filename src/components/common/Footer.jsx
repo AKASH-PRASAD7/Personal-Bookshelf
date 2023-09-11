@@ -16,7 +16,7 @@ const Footer = () => {
               <a
                 target="_blank"
                 rel="noreferrer"
-                href="https://linktr.ee/akash_prasad"
+                href="https://akash-prasad.netlify.app/"
               >
                 <u className="text-lg font-semibold">Akash Prasad</u>
               </a>

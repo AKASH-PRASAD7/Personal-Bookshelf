@@ -13,10 +13,20 @@ const Bookcard = ({ title, author, edition }) => {
           />
         </div>
         <div className="absolute bottom-0 opacity bg-gray-900 w-full z-10 rounded-b-xl p-2">
-          <p className="text-center">Title: {title}</p>
-          <p className="text-center">Edition: {edition}</p>
-          <p className="text-center">Author: {author}</p>
-          <button className="bg-cyan-500 flex items-center m-2 justify-center gap-1 hover:bg-cyan-700 mx-16 h-8 w-28 font-bold rounded-xl">
+          <p className="text-center text-gray-300">
+            {" "}
+            <span className="text-gray-500"> Title:</span> {title}
+          </p>
+          <p className="text-center text-gray-300">
+            {" "}
+            <span className="text-gray-500"> Author:</span> {author}
+          </p>
+          <p className="text-center text-gray-400">
+            {" "}
+            <span className="text-gray-500"> Edition:</span> {edition}
+          </p>
+
+          <button className="bg-cyan-500 flex items-center m-2 justify-center ap-1 hover:bg-cyan-700 mx-16 h-8 w-28 font-bold rounded-xl">
             <FaPlus /> Bookshelf
           </button>
         </div>

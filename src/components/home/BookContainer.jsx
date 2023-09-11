@@ -8,7 +8,7 @@ const BookContainer = () => {
   const fetchBooks = async () => {
     try {
       let Bookdata = await axios(
-        "https://openlibrary.org/search.json?q=the+lord+of+the+rings&limit=10&page=1"
+        "https://openlibrary.org/search.json?q=harry+potter&limit=10&page=1"
       );
 
       Bookdata = Bookdata.data?.docs;

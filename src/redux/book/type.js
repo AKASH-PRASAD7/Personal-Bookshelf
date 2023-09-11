@@ -1,0 +1,6 @@
+export const FETCH_BOOKS = "FETCH_BOOKS";
+export const FETCH_SEARCHED_BOOKS = "FETCH_SEARCHED_BOOKS";
+export const ADD_TO_BOOKSHELF = "ADD_TO_BOOKSHELF";
+export const REMOVE_FROM_BOOKSHELF = "REMOVE_FROM_BOOKSHELF";
+export const ERROR = "ERROR";
+export const LOADING = "LOADING";
