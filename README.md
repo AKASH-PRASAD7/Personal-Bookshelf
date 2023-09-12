@@ -1,6 +1,3 @@
-Creating a GitHub README file is an essential part of documenting your project and making it accessible to others. Below is a template for your "Personal Bookshelf" project README file. You can use this template as a starting point and customize it to fit your project's specific details and needs.
-
-````markdown
 # Personal Bookshelf
 
 Personal Bookshelf is a web application built using React and Tailwind CSS that allows users to search for books using the Open Library API, add them to their personal bookshelf, and remove them from the bookshelf.
@@ -23,6 +20,7 @@ To get started with the Personal Bookshelf project, follow these steps:
 ```bash
 git clone https://github.com/AKASH-PRASAD7/Personal-Bookshelf.git
 ```
+
 ````
 
 2. Navigate to the project directory:
@@ -71,3 +69,4 @@ If you'd like to contribute to this project, please follow these steps:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+````
