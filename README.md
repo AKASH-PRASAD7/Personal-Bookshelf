@@ -43,10 +43,9 @@ npm start
 
 ## Usage
 
-1. Use the search bar to find books by title, author, or ISBN.
-2. Click on a book to view more details.
-3. To add a book to your bookshelf, click the "Add to Bookshelf" button on the book details page.
-4. To remove a book from your bookshelf, click the "Remove from Bookshelf" button on the book details page.
+1. Use the search bar to find books by title.
+2. To add a book to your bookshelf, click the "Add to Bookshelf" button on the book details page.
+3. To remove a book from your bookshelf, click the "Remove from Bookshelf" button on the book details page.
 
 ## Technologies Used
 
