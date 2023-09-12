@@ -20,7 +20,7 @@ const Bookcard = ({ title, author, edition, id, isbn }) => {
   const img = (isbn && isbn[1]) || cover;
   return (
     <>
-      <section className="text-white shadow-2xl shadow-slate-700/50 relative w-64 h-80 rounded-xl">
+      <section className="text-white shadow-2xl shadow-slate-700/50 relative phone:w-48 phone:h-64  tablet:w-52 tablet:h-64 laptop:w-64 laptop:h-80 rounded-xl">
         <div className="w-full h-full">
           <img
             src={`https://covers.openlibrary.org/b/isbn/${img}-L.jpg`}

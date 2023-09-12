@@ -22,6 +22,7 @@ const bookReducer = (state = initialState, { type, payload }) => {
         ...state,
         books: payload,
         error: null,
+        searchBooks: [],
         loading: false,
       };
     case FETCH_SEARCHED_BOOKS:

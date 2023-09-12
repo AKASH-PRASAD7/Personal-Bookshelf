@@ -14,7 +14,9 @@ const BookShelf = () => {
   return (
     <>
       <section className="text-white">
-        <p className="text-6xl font-bold m-8 font-bold">My Books</p>
+        <p className="text-4xl tablet:text-4xl laptop:text-6xl font-bold m-8 font-bold">
+          My Books
+        </p>
         <div>
           {bookShelf.length === 0 ? (
             <Emptyshelf />
