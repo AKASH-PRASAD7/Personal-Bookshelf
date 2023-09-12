@@ -30,24 +30,26 @@ const BookContainer = () => {
         {loading ? (
           <Loader />
         ) : searchBooks.length > 0 ? (
-          searchBooks.map((each) => {
+          searchBooks.map((each, index) => {
             return (
               <Bookcard
                 key={each.key}
                 title={each.title}
                 author={each.author_name}
                 edition={each.edition_count}
+                id={`${each.key}${index}`}
               />
             );
           })
         ) : (
-          books.map((each) => {
+          books.map((each, index) => {
             return (
               <Bookcard
                 key={each.key}
                 title={each.title}
                 author={each.author_name}
                 edition={each.edition_count}
+                id={`${each.key}${index}`}
               />
             );
           })

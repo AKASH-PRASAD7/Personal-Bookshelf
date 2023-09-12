@@ -3,6 +3,7 @@ import {
   FETCH_SEARCHED_BOOKS,
   ADD_TO_BOOKSHELF,
   REMOVE_FROM_BOOKSHELF,
+  GET_BOOKSHELF,
   ERROR,
   LOADING,
 } from "./type";
@@ -27,6 +28,13 @@ const bookReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         searchBooks: payload,
+        error: null,
+        loading: false,
+      };
+    case GET_BOOKSHELF:
+      return {
+        ...state,
+        bookShelf: payload,
         error: null,
         loading: false,
       };

@@ -1,7 +1,20 @@
 import React from "react";
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus, FaX } from "react-icons/fa6";
+import { addToBookShelf, removeFromBookShelf } from "../../redux/book/action";
+import { useDispatch, useSelector } from "react-redux";
 import "../../App.css";
-const Bookcard = ({ title, author, edition }) => {
+
+const Bookcard = ({ title, author, edition, id }) => {
+  const { bookShelf } = useSelector((state) => state.books);
+  let isInBookShelf = bookShelf.find((each) => each.id === id);
+
+  const dispatch = useDispatch();
+  const handleAdd = () => {
+    dispatch(addToBookShelf({ title, author, edition, id }));
+  };
+  const handleRemove = () => {
+    dispatch(removeFromBookShelf({ title, author, edition, id }));
+  };
   return (
     <>
       <section className="text-white shadow-2xl shadow-slate-700/50 relative w-64 h-80 rounded-xl">
@@ -27,10 +40,23 @@ const Bookcard = ({ title, author, edition }) => {
             {" "}
             <span className="text-gray-500"> Edition:</span> {edition}
           </p>
-
-          <button className="bg-cyan-500 flex items-center m-2 justify-center ap-1 hover:bg-cyan-700 mx-16 h-8 w-28 font-bold rounded-xl">
-            <FaPlus /> Bookshelf
-          </button>
+          <div>
+            {isInBookShelf ? (
+              <button
+                onClick={() => handleRemove()}
+                className="bg-red-500 flex items-center m-2 justify-center gap-1 hover:bg-red-700 mx-16 h-8 w-28 font-bold rounded-xl"
+              >
+                <FaX /> Remove
+              </button>
+            ) : (
+              <button
+                onClick={() => handleAdd()}
+                className="bg-cyan-500 flex items-center m-2 justify-center gap-1 hover:bg-cyan-700 mx-16 h-8 w-28 font-bold rounded-xl"
+              >
+                <FaPlus /> Bookshelf
+              </button>
+            )}
+          </div>
         </div>
       </section>
     </>

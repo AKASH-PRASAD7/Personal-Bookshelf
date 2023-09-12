@@ -3,6 +3,7 @@ import {
   FETCH_SEARCHED_BOOKS,
   ADD_TO_BOOKSHELF,
   REMOVE_FROM_BOOKSHELF,
+  GET_BOOKSHELF,
   ERROR,
   LOADING,
 } from "./type";
@@ -54,7 +55,34 @@ export const fetchSearchedBooks = (query) => async (dispatch) => {
   }
 };
 
-export const addToBookShelf = (book) => async (dispatch) => {
+export const getBookShelf = () => (dispatch) => {
+  try {
+    dispatch({
+      type: LOADING,
+      payload: true,
+    });
+    let bookShelf = [];
+    //checking bookshelf present or not
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      bookShelf = user.bookShelf;
+    } else {
+      bookShelf = [];
+    }
+
+    return dispatch({
+      type: GET_BOOKSHELF,
+      payload: bookShelf,
+    });
+  } catch (error) {
+    return dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
+};
+
+export const addToBookShelf = (book) => (dispatch) => {
   try {
     dispatch({
       type: LOADING,
@@ -87,7 +115,7 @@ export const addToBookShelf = (book) => async (dispatch) => {
   }
 };
 
-export const removeFromBookShelf = (book) => async (dispatch) => {
+export const removeFromBookShelf = (book) => (dispatch) => {
   try {
     dispatch({
       type: LOADING,
@@ -95,7 +123,7 @@ export const removeFromBookShelf = (book) => async (dispatch) => {
     });
     const user = JSON.parse(localStorage.getItem("user"));
     // Filter out the book
-    const newBookShelf = user.bookShelf.filter((each) => each.key !== book.key);
+    const newBookShelf = user.bookShelf.filter((each) => each.id !== book.id);
     // Update the user's bookShelf
     user.bookShelf = newBookShelf;
     localStorage.setItem("user", JSON.stringify(user));

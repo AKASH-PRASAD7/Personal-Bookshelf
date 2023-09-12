@@ -4,7 +4,7 @@ import BookContainer from "./BookContainer";
 const index = () => {
   return (
     <>
-      <BookContainer />
+      <BookContainer />{" "}
     </>
   );
 };
