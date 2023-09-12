@@ -21,8 +21,6 @@ To get started with the Personal Bookshelf project, follow these steps:
 git clone https://github.com/AKASH-PRASAD7/Personal-Bookshelf.git
 ```
 
-````
-
 2. Navigate to the project directory:
 
 ```bash
@@ -69,4 +67,3 @@ If you'd like to contribute to this project, please follow these steps:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-````
