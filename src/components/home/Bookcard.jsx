@@ -4,23 +4,26 @@ import { addToBookShelf, removeFromBookShelf } from "../../redux/book/action";
 import { useDispatch, useSelector } from "react-redux";
 import "../../App.css";
 
-const Bookcard = ({ title, author, edition, id }) => {
+const Bookcard = ({ title, author, edition, id, isbn }) => {
   const { bookShelf } = useSelector((state) => state.books);
   let isInBookShelf = bookShelf.find((each) => each.id === id);
 
   const dispatch = useDispatch();
   const handleAdd = () => {
-    dispatch(addToBookShelf({ title, author, edition, id }));
+    dispatch(addToBookShelf({ title, author, edition, id, isbn }));
   };
   const handleRemove = () => {
     dispatch(removeFromBookShelf({ title, author, edition, id }));
   };
+  const cover =
+    "https://dfb503wu29eo2.cloudfront.net/slir/h1200/png24-front/bookcover0010361.jpg";
+  const img = (isbn && isbn[1]) || cover;
   return (
     <>
       <section className="text-white shadow-2xl shadow-slate-700/50 relative w-64 h-80 rounded-xl">
         <div className="w-full h-full">
           <img
-            src="https://covers.openlibrary.org/b/id/240727-L.jpg"
+            src={`https://covers.openlibrary.org/b/isbn/${img}-L.jpg`}
             alt="book"
             className="w-full h-full z-1 rounded-xl"
           />

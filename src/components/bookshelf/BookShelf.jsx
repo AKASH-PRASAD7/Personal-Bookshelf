@@ -19,7 +19,7 @@ const BookShelf = () => {
           {bookShelf.length === 0 ? (
             <Emptyshelf />
           ) : (
-            <div className="flex justify-around gap-4 flex-warp m-4">
+            <div className="flex justify-around gap-4 flex-wrap m-4">
               {bookShelf.map((each, index) => {
                 return (
                   <BookCard
@@ -28,6 +28,7 @@ const BookShelf = () => {
                     author={each.author}
                     edition={each.edition}
                     id={each.id}
+                    isbn={each.isbn}
                   />
                 );
               })}

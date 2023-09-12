@@ -38,6 +38,7 @@ const BookContainer = () => {
                 author={each.author_name}
                 edition={each.edition_count}
                 id={`${each.key}${index}`}
+                isbn={each.isbn}
               />
             );
           })
@@ -50,6 +51,7 @@ const BookContainer = () => {
                 author={each.author_name}
                 edition={each.edition_count}
                 id={`${each.key}${index}`}
+                isbn={each.isbn}
               />
             );
           })
