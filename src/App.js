@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import BookShelf from "./pages/BookShelf";
 import ErrorPage from "./pages/ErrorPage";
+import BookDetailsPage from "./pages/BookDetailsPage";
+import AuthorDetailsPage from "./pages/AuthorDetailsPage";
 
 //Routes
 const router = createBrowserRouter([
@@ -13,6 +15,14 @@ const router = createBrowserRouter([
   {
     path: "/bookshelf",
     element: <BookShelf />,
+  },
+  {
+    path: "/bookdetails/:bookKey/:id",
+    element: <BookDetailsPage />,
+  },
+  {
+    path: "/author/:authorKey",
+    element: <AuthorDetailsPage />,
   },
   {
     path: "*",
