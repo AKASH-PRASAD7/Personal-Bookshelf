@@ -1,6 +1,9 @@
 import {
   FETCH_BOOKS,
+  FETCH_A_BOOK,
   FETCH_SEARCHED_BOOKS,
+  FETCH_AUTHOR_DETAIL,
+  FETCH_AUTHOR_WORK_DETAIL,
   ADD_TO_BOOKSHELF,
   REMOVE_FROM_BOOKSHELF,
   GET_BOOKSHELF,
@@ -9,9 +12,12 @@ import {
 } from "./type";
 
 let initialState = {
+  book: [],
   books: [],
   searchBooks: [],
   bookShelf: [],
+  author: [],
+  authorWorks: [],
   error: null,
   loading: false,
 };
@@ -25,10 +31,31 @@ const bookReducer = (state = initialState, { type, payload }) => {
         searchBooks: [],
         loading: false,
       };
+    case FETCH_A_BOOK:
+      return {
+        ...state,
+        book: payload,
+        error: null,
+        loading: false,
+      };
     case FETCH_SEARCHED_BOOKS:
       return {
         ...state,
         searchBooks: payload,
+        error: null,
+        loading: false,
+      };
+    case FETCH_AUTHOR_DETAIL:
+      return {
+        ...state,
+        author: payload,
+        error: null,
+        loading: false,
+      };
+    case FETCH_AUTHOR_WORK_DETAIL:
+      return {
+        ...state,
+        authorWorks: payload,
         error: null,
         loading: false,
       };

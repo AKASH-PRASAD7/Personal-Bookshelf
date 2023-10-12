@@ -1,6 +1,9 @@
 import {
   FETCH_BOOKS,
+  FETCH_A_BOOK,
   FETCH_SEARCHED_BOOKS,
+  FETCH_AUTHOR_DETAIL,
+  FETCH_AUTHOR_WORK_DETAIL,
   ADD_TO_BOOKSHELF,
   REMOVE_FROM_BOOKSHELF,
   GET_BOOKSHELF,
@@ -20,6 +23,7 @@ export const fetchBooks = () => async (dispatch) => {
       "https://openlibrary.org/search.json?q=harry+potter&limit=10&page=1"
     );
     Bookdata = Bookdata.data?.docs;
+
     return dispatch({
       type: FETCH_BOOKS,
       payload: Bookdata,
@@ -31,7 +35,73 @@ export const fetchBooks = () => async (dispatch) => {
     });
   }
 };
+export const fetchABook = (query) => async (dispatch) => {
+  try {
+    dispatch({
+      type: LOADING,
+      payload: true,
+    });
+    //fetching book
+    let Bookdata = await axios.get(
+      `https://openlibrary.org/search.json?q=works/${query}&limit=1`
+    );
+    Bookdata = Bookdata.data?.docs;
+    return dispatch({
+      type: FETCH_A_BOOK,
+      payload: Bookdata,
+    });
+  } catch (error) {
+    return dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
+};
 
+export const fetchAuthorDetail = (query) => async (dispatch) => {
+  try {
+    dispatch({
+      type: LOADING,
+      payload: true,
+    });
+    //fetching author
+    let Authordata = await axios.get(
+      `https://openlibrary.org/authors/${query}.json`
+    );
+    Authordata = Authordata?.data;
+    return dispatch({
+      type: FETCH_AUTHOR_DETAIL,
+      payload: Authordata,
+    });
+  } catch (error) {
+    return dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
+};
+export const fetchAuthorWorkDetail = (query) => async (dispatch) => {
+  try {
+    dispatch({
+      type: LOADING,
+      payload: true,
+    });
+    //fetching author work details
+    let Authordata = await axios.get(
+      `https://openlibrary.org/authors/${query}/works.json`
+    );
+    Authordata = Authordata?.data;
+    return dispatch({
+      type: FETCH_AUTHOR_WORK_DETAIL,
+      payload: Authordata,
+    });
+  } catch (error) {
+    return dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
+};
 export const fetchSearchedBooks = (query) => async (dispatch) => {
   try {
     dispatch({
@@ -54,7 +124,6 @@ export const fetchSearchedBooks = (query) => async (dispatch) => {
     });
   }
 };
-
 export const getBookShelf = () => (dispatch) => {
   try {
     dispatch({

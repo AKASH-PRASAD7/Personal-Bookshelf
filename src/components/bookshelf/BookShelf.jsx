@@ -24,14 +24,15 @@ const BookShelf = () => {
             <div className="flex justify-around gap-4 flex-wrap m-4">
               {bookShelf.map((each, index) => {
                 return (
-                  <BookCard
-                    key={index}
-                    title={each.title}
-                    author={each.author}
-                    edition={each.edition}
-                    id={each.id}
-                    isbn={each.isbn}
-                  />
+                    <BookCard
+                        keys={each.keys}
+                        title={each.title}
+                        author={each.author}
+                        edition={each.edition}
+                        id={each.id}
+                        isbn={each.isbn}
+                      />
+                  // </Link>
                 );
               })}
             </div>
